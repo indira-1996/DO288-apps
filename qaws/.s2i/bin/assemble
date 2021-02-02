@@ -1,0 +1,5 @@
+echo "now this is a custom s2i script that runs actual assemble script"
+
+/usr/libexec/s2i/assemble
+
+echo "custom assemble script is now complete"
