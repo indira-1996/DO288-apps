@@ -1,5 +1,8 @@
-echo "this is a custom run script"
+#!/bin/bash
 
-/usr/libexec/s2i/run
+source ${HTTPD_CONTAINER_SCRIPTS_PATH}/common.sh
 
-echo "custom run script is now complete"
+export HTTPD_RUN_BY_S2I=1
+
+exec run-httpd $@
+
