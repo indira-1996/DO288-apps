@@ -1,0 +1,5 @@
+echo "this is a custom run script"
+
+/usr/libexec/s2i/run
+
+echo "custom run script is now complete"
