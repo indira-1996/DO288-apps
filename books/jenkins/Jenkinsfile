@@ -140,12 +140,13 @@ pipeline {
 
                     openshift.withCluster() {
                         //TODO: Watch deployment until pod is in 'Running' state
-			openshift.withProject( "${STAGE_PROJECT}" )
+			openshift.withProject( "${STAGE_PROJECT}" ) {
 				def deployments = openshift.selector("dc","${APP_NAME}").rollout()
 				openshift.selector("dc","${APP_NAME}").rollout().related('pods').untilEach(1) {
 					return(it.object().status.phase == "Running")
 					}
 				}
+			}
 
                         echo "Deployment to Staging env is complete. Access the app at the URL http://${routeHost}."
                     }
